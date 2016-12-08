@@ -245,8 +245,8 @@ public class PlayFair {
             if (row1==row2 && column1==column2){
                 --row1;
                 --row2;
-                if(row1<0) row1=5;
-                if(row1<0) row2=5;
+                if(row1<0) row1=mateixSize-1;
+                if(row1<0) row2=mateixSize-1;
 
                 plainText+=String.valueOf(matrix[column1][row1]);
                 plainText+=String.valueOf(matrix[column2][row2]);
@@ -254,8 +254,8 @@ public class PlayFair {
             } else if(row1==row2) {
                 --column1;
                 --column2;
-                if(column1<0) column1=5;
-                if(column2<0) column2=5;
+                if(column1<0) column1=mateixSize-1;
+                if(column2<0) column2=mateixSize-1;
 
                 plainText+=String.valueOf(matrix[column1][row2]);
                 plainText+=String.valueOf(matrix[column2][row1]);
@@ -264,8 +264,8 @@ public class PlayFair {
 
                 --row1;
                 --row2;
-                if(row1<0) row1=5;
-                if(row2<0) row2=5;
+                if(row1<0) row1=mateixSize-1;
+                if(row2<0) row2=mateixSize-1;
 
                 plainText+=String.valueOf(matrix[column1][row1]);
                 plainText+=String.valueOf(matrix[column2][row2]);

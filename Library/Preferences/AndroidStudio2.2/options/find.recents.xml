@@ -6,6 +6,8 @@
       <find>charAt</find>
       <find>matrix</find>
       <find>padd</find>
+      <find>marg</find>
+      <find>off</find>
     </findStrings>
   </component>
 </application>

@@ -49,9 +49,25 @@
         android:paddingTop="12dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_above="@+id/line1"
-        android:layout_toRightOf="@+id/etKey"
-        android:layout_toEndOf="@+id/etKey" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textColorHint="@color/black"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/etKey"
+        android:hint="حروف وأرقام عربية فقط"
+        android:digits="اأإءآىبپتةثجچحخدذرزسشصضطظعغفڤقكلمنهوؤيئ٠١٢٣٤٥٦٧٨٩ "
+        android:layout_below="@+id/tvKey"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -59,18 +75,32 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/etKey"
         android:id="@+id/line1"
+        android:weightSum="9"
+        android:gravity="right"
         >
 
+        <ToggleButton
+            android:layout_weight="1"
+            android:text="ToggleButton"
+            android:layout_width="68dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/MtarixTogBTN"
+            android:backgroundTint="@color/grey"
+            android:textColor="@color/white"
+            android:textOff="شرح"
+            android:textOn="إخفاء"
+            />
 
         <Button
             android:text="تشفير"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/EncryptBTN"
-            android:layout_weight="1"
+            android:layout_weight="4"
             android:padding="8dp"
-            android:backgroundTint="@color/colorPrimary"
+            android:backgroundTint="@color/colorPrimaryDark"
             android:textColor="@color/white"
+
 
             />
 
@@ -79,10 +109,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/decryptBTN"
-            android:layout_weight="1"
+            android:layout_weight="4"
             android:padding="8dp"
             android:backgroundTint="@color/colorAccent"
             android:textColor="@color/white"
+            android:layout_gravity="right"
 
 
             />
@@ -114,6 +145,8 @@
                 android:textAlignment="center"
                 android:textSize="18dp"
                 android:paddingTop="12dp"
+
+
                 />
 
             <TextView
@@ -155,22 +188,11 @@
                 android:textIsSelectable="true"
                 android:textSize="24dp"
                 android:layout_below="@+id/tvMatrix" />
+
+
         </LinearLayout>
     </ScrollView>
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/etKey"
-        android:hint="حروف وأرقام عربية فقط"
-        android:digits="اأإءآىبپتةثجچحخدذرزسشصضطظعغفڤقكلمنهوؤيئ٠١٢٣٤٥٦٧٨٩ "
 
-
-        android:layout_below="@+id/etPlaintext"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-     />
 
 </RelativeLayout>

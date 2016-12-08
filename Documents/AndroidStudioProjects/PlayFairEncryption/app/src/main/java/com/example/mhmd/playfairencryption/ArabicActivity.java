@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
@@ -42,9 +44,11 @@ public class ArabicActivity extends AppCompatActivity {
         final TextView tvKeyText = (TextView) findViewById(R.id.tvKeyPlain);
         final TextView tvMatrixText = (TextView) findViewById(R.id.tvMatrix);
         final EditText etPlainText = (EditText) findViewById(R.id.etPlaintext);
-        final EditText etkey = (EditText)findViewById(R.id.etKey);
+        final EditText etkey = (EditText) findViewById(R.id.etKey);
         final TextView tvResult = (TextView) findViewById(R.id.result);
-
+        final ToggleButton matrixToggle = (ToggleButton) findViewById(R.id.MtarixTogBTN);
+        final Typeface kawkabMono = Typeface.createFromAsset(getAssets(), "fonts/KawkabMono-Light.ttf");
+        tvMatrixText.setTypeface(kawkabMono);
 
 
         encryptButton.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +56,7 @@ public class ArabicActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                if (etPlainText.length()==0 ) {
+                if (etPlainText.length() == 0) {
 
                     Toast.makeText(getApplicationContext(), "أدخل النص", Toast.LENGTH_SHORT).show();
 
@@ -66,37 +70,43 @@ public class ArabicActivity extends AppCompatActivity {
                     tvResult.setText("تشفير");
 
                     String key = etkey.getText().toString();
-                    String text= etPlainText.getText().toString();
-                    String alphabets=getIntent().getStringExtra("Alphabets");;
+                    String text = etPlainText.getText().toString();
+                    String alphabets = getIntent().getStringExtra("Alphabets");
+                    ;
 
-                    PlayFair arabicEncrypt = new PlayFair(alphabets,text,key);
+                    final PlayFair arabicEncrypt = new PlayFair(alphabets, text, key);
 
 
-                    // Tracing & print Start
-                    String printedKey = arabicEncrypt.getKey();
-                    String printedText= arabicEncrypt.getPlainText();
-                    char[][] printedMatrix = arabicEncrypt.getMatrix();
-                    StringBuilder printedMatrixString = new StringBuilder();
+                    matrixToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                            if (isChecked) {
+                                // The toggle is enabled
 
-                    for (int i = 0; i < 7; i++) {
-                        printedMatrixString.append("صف\t");
+                                char[][] printedMatrix = arabicEncrypt.getMatrix();
+                                StringBuilder printedMatrixString = new StringBuilder();
 
-                        for (int j = 0; j < 7; j++) {
-                            printedMatrixString.append("\t\t"+printedMatrix[i][j]+"\t\t");
+                                for (int i = 0; i < 7; i++) {
+                                    printedMatrixString.append("صف"+(i+1)+":\t");
 
+                                    for (int j = 0; j < 7; j++) {
+                                        printedMatrixString.append("\t\t" + printedMatrix[i][j] + "\t\t");
+
+                                    }
+                                    printedMatrixString.append("\n");
+
+
+                                }
+                                tvMatrixText.setText(printedMatrixString);
+                            } else {
+                                tvKeyText.setText("");
+                                tvMatrixText.setText("");
+                            }
                         }
-                        printedMatrixString.append("\n");
+                    });
 
 
-                    }
-                    Typeface kawkabMono = Typeface.createFromAsset(getAssets(), "fonts/KawkabMono-Light.ttf");
-                    tvMatrixText.setTypeface(kawkabMono);
-
-                    tvKeyText.setText("محتوى الرسالة:\t"+printedText+"\nمفتاح التشفير: \t"+printedKey);
-                    tvMatrixText.setText(printedMatrixString);
-                    // Tracing & print End
-
-                    String cipherText = arabicEncrypt.encrypt(arabicEncrypt.getMatrix(),arabicEncrypt.getPlainText());
+                    String cipherText = arabicEncrypt.encrypt(arabicEncrypt.getMatrix(), arabicEncrypt.getPlainText());
+                    tvCipherText.setTextColor(getResources().getColor(R.color.colorPrimaryDark));
                     tvCipherText.setText(cipherText);
 
 //                     Hide Keyboard After clicking Encrypt
@@ -118,7 +128,7 @@ public class ArabicActivity extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                if (etPlainText.length()==0 ) {
+                if (etPlainText.length() == 0) {
 
                     Toast.makeText(getApplicationContext(), "أدخل النص", Toast.LENGTH_SHORT).show();
 
@@ -132,37 +142,48 @@ public class ArabicActivity extends AppCompatActivity {
                     tvResult.setText("فك التشفير");
 
                     String key = etkey.getText().toString();
-                    String text= etPlainText.getText().toString();
-                    String alphabets=getIntent().getStringExtra("Alphabets");;
+                    String text = etPlainText.getText().toString();
+                    String alphabets = getIntent().getStringExtra("Alphabets");
+                    ;
 
-                    PlayFair arabicDecrypt = new PlayFair(alphabets,text,key);
+                    final PlayFair arabicDecrypt = new PlayFair(alphabets, text, key);
 
 
-                    // Tracing & print Start
-                    String printedKey = arabicDecrypt.getKey();
-                    String printedText= arabicDecrypt.getPlainText();
-                    char[][] printedMatrix = arabicDecrypt.getMatrix();
-                    StringBuilder printedMatrixString = new StringBuilder();
+                    matrixToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                            if (isChecked) {
+                                // The toggle is enabled
 
-                    for (int i = 0; i < 7; i++) {
-                        printedMatrixString.append("صف\t");
+                                char[][] printedMatrix = arabicDecrypt.getMatrix();
+                                StringBuilder printedMatrixString = new StringBuilder();
 
-                        for (int j = 0; j < 7; j++) {
-                            printedMatrixString.append("\t\t"+printedMatrix[i][j]+"\t\t");
+                                for (int i = 0; i < 7; i++) {
 
+                                    printedMatrixString.append("صف"+(i+1)+":\t");
+
+                                    for (int j = 0; j < 7; j++) {
+
+                                        printedMatrixString.append("\t\t" + printedMatrix[i][j] + "\t\t");
+
+                                    }
+                                    printedMatrixString.append("\n");
+
+
+                                }
+
+                                tvMatrixText.setText(printedMatrixString);
+
+                            } else {
+                                tvKeyText.setText("");
+                                tvMatrixText.setText("");
+
+                            }
                         }
-                        printedMatrixString.append("\n");
+                    });
 
 
-                    }
-                    Typeface kawkabMono = Typeface.createFromAsset(getAssets(), "fonts/KawkabMono-Light.ttf");
-                    tvMatrixText.setTypeface(kawkabMono);
-
-                    tvKeyText.setText("محتوى الرسالة:\t"+printedText+"\nمفتاح التشفير: \t"+printedKey);
-                    tvMatrixText.setText(printedMatrixString);
-                    // Tracing & print End
-
-                    String cipherText = arabicDecrypt.decrypt(arabicDecrypt.getMatrix(),arabicDecrypt.getPlainText());
+                    String cipherText = arabicDecrypt.decrypt(arabicDecrypt.getMatrix(), arabicDecrypt.getPlainText());
+                    tvCipherText.setTextColor(getResources().getColor(R.color.colorAccent));
                     tvCipherText.setText(cipherText);
 
                     // Hide Keyboard After clicking Encrypt
@@ -174,6 +195,43 @@ public class ArabicActivity extends AppCompatActivity {
 
                 }
 
+            }
+        });
+
+
+        matrixToggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                String englishAlphabets = getIntent().getStringExtra("Alphabets");
+
+                if (isChecked) {
+
+
+                    StringBuilder printedMatrixString = new StringBuilder();
+                    int counter =0;
+
+                    for (int i = 0; i < 7; i++) {
+                        printedMatrixString.append("صف"+(i+1)+":\t");
+
+                        for (int j = 0; j < 7; j++) {
+                            printedMatrixString.append(englishAlphabets.charAt(counter)+"\t\t\t");
+                            counter++;
+
+                        }
+                        printedMatrixString.append("\n");
+
+
+                    }
+
+                    tvMatrixText.setText(printedMatrixString);
+                } else {
+                    tvKeyText.setText("");
+                    tvMatrixText.setText("");
+                }
+                InputMethodManager inputManager = (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
             }
         });
 
