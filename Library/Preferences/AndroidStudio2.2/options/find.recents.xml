@@ -1,0 +1,11 @@
+<application>
+  <component name="FindRecents">
+    <findStrings>
+      <find>plainText</find>
+      <find>key</find>
+      <find>charAt</find>
+      <find>matrix</find>
+      <find>padd</find>
+    </findStrings>
+  </component>
+</application>
