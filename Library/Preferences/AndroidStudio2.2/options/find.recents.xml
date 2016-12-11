@@ -8,6 +8,8 @@
       <find>padd</find>
       <find>marg</find>
       <find>off</find>
+      <find>englis</find>
+      <find>engli</find>
     </findStrings>
   </component>
 </application>
