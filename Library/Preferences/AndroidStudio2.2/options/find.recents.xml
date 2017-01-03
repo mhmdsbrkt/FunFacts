@@ -1,15 +1,36 @@
 <application>
   <component name="FindRecents">
     <findStrings>
-      <find>plainText</find>
-      <find>key</find>
-      <find>charAt</find>
-      <find>matrix</find>
-      <find>padd</find>
-      <find>marg</find>
-      <find>off</find>
-      <find>englis</find>
-      <find>engli</find>
+      <find>de</find>
+      <find>tvKeyPlain</find>
+      <find>playf</find>
+      <find>aas</find>
+      <find>some</find>
+      <find>v</find>
+      <find>welcomemsg</find>
+      <find>from</find>
+      <find>fflArray</find>
+      <find>eng</find>
+      <find>fll</find>
+      <find>toas</find>
+      <find>fbac</find>
+      <find>fb</find>
+      <find>msgToser</find>
+      <find>cipherT</find>
+      <find>result</find>
+      <find>hell</find>
+      <find>oddF</find>
+      <find>Farray</find>
+      <find>setF</find>
+      <find>fllAr</find>
+      <find>CipherText</find>
+      <find>messageFromClient</find>
+      <find>fillerLetter</find>
+      <find>flla</find>
+      <find>msg</find>
+      <find>Cipher</find>
+      <find>valid</find>
+      <find>togg</find>
     </findStrings>
   </component>
 </application>

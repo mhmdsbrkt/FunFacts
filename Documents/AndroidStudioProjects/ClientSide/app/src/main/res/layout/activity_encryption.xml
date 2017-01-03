@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_playfair"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.mhmdbrkt.clientside.EncryptionActivity">
+
+    <TextView
+        android:id="@+id/tvPlaintext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="Plaintext"
+        android:textSize="18dp" />
+
+    <EditText
+        android:id="@+id/etPlaintext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvPlaintext"
+        android:ems="10"
+        android:hint="English Letters &amp; Numbers Only"
+        android:inputType="textPersonName"
+
+
+        />
+
+    <TextView
+        android:id="@+id/tvmatrixSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/etPlaintext"
+        android:paddingTop="12dp"
+        android:text="Encryption Key"
+        android:textSize="18dp" />
+
+    <EditText
+        android:id="@+id/etKey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tvmatrixSize"
+        android:ems="10"
+        android:hint="English Letters  &amp; Numbers Only"
+        android:inputType="textPersonName"
+
+
+        />
+
+    <LinearLayout
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etKey"
+        android:orientation="horizontal"
+        android:weightSum="9">
+
+
+        <Button
+            android:id="@+id/EncryptBTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:backgroundTint="@color/colorPrimary"
+            android:padding="8dp"
+            android:text="Encrypt"
+            android:textColor="@color/white"
+
+            />
+
+        <Button
+            android:id="@+id/decryptBTN"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:backgroundTint="@color/colorAccent"
+            android:padding="8dp"
+            android:text="Decrypt"
+            android:textColor="@color/white"
+
+
+            />
+
+
+        <Button
+            android:id="@+id/MtarixTogBTN"
+            android:layout_width="68dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:backgroundTint="@color/grey"
+            android:text="Send"
+            android:textColor="@color/white"
+
+
+            />
+    </LinearLayout>
+
+
+    <ScrollView
+        android:id="@+id/svResult"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/line1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/line1"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="12dp"
+                android:text="Result"
+                android:textAlignment="center"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/tvKeyPlain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/result"
+                android:fontFamily="monospace"
+                android:textIsSelectable="true"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/tvMatrix"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tvKeyPlain"
+                android:fontFamily="serif-monospace"
+                android:textAlignment="center"
+                android:textIsSelectable="true"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/tvCipherText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/tvMatrix"
+                android:layout_centerHorizontal="true"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimaryDark"
+                android:textIsSelectable="true"
+                android:textSize="24dp" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
